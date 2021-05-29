@@ -1,0 +1,145 @@
+{
+    "commands" : [
+        {
+            "name" : "goto",
+            "args" : [
+                ["place"]
+            ]
+        },
+        {
+            "name" : "move",
+            "args" : [
+                [
+                    "place",
+                    "item",
+                    "person"
+                ],
+                [
+                    "place",
+                    "item",
+                    "person"
+                ]
+            ]
+        },
+        {
+            "name" : "take",
+            "args" : [
+                ["item"]
+            ]
+        },
+        {
+            "name" : "put",
+            "args" : [
+                ["item"],
+                [
+                    "place",
+                    "item",
+                    "person"
+                ]
+            ]
+        },
+        {
+            "name" : "give",
+            "args" : [
+                ["person"],
+                ["item"]
+            ]
+        }
+    ],
+    "attributes" : [
+        "sticky",
+        "greesy",
+        "minty",
+        "soft",
+        "harsh",
+        "course",
+        "chewy",
+        "meaty",
+        "nutty",
+        "flowery",
+        "smelly",
+        "refreshing"
+    ],
+    "items" : [
+        {
+            "name" : "gum",
+            "attributes" :[
+                "minty",
+                "chewy"
+            ]
+        },
+        {
+            "name" : "fried cheese",
+            "attributes" :[
+                "greesy",
+                "chewy",
+                "soft"
+            ]
+        },
+        {
+            "name" : "coffee",
+            "attributes" :[
+                "harsh",
+                "nutty"
+            ]
+        },
+        {
+            "name" : "motor oil",
+            "attributes" :[
+                "greesy",
+                "smelly"
+            ]
+        }
+    ],
+    "persons" : [
+        {
+            "name" : "billy"
+        },
+        {
+            "name" : "ropesmith"
+        }
+    ],
+    "places" : [
+        {
+            "name" : "billy's mom's house's",
+            "connected" : [
+                "tavern",
+                "meadow"
+            ]
+        },
+        {
+            "name" : "tavern",
+            "connected" : [
+                "billy's mom's house's",
+                "meadow"
+            ]
+        },
+        {
+            "name" : "meadow",
+            "connected" : [
+                "billy's mom's house's",
+                "tavern"
+            ]
+        }
+    ],
+    "requirements" : [
+        {
+            "name":"degreese",
+            "propertyName" : "stuck",
+            "propertyValue" : true,
+            "requirements":[
+                "greesy"
+            ]
+        },
+        {
+            "name":"freshen up",
+            "propertyName" : "fresh",
+            "propertyValue" : false,
+            "requirements":[
+                "refreshing",
+                "flowery",
+                "minty"
+            ]
+        }
+    ]
+}

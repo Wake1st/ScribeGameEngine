@@ -1,0 +1,48 @@
+body {
+    background-color: rgb(2, 18, 32);
+    color: rgb(180, 220, 233);
+    font-size: large;
+}
+
+.container {
+    position: fixed;
+    height: 100%;
+    width: 60%;
+    left: 20%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: stretch;
+}
+
+#history {
+    background-color: rgb(4, 24, 41);
+}
+
+.event {
+    background-color: rgb(5, 28, 48);
+    padding: 0.5em 3em;
+    margin: 0.4em;
+}
+
+.event p {
+    margin: 0;
+}
+
+.event p:first-child {
+    font-weight: bolder;
+    font-size: larger;
+}
+
+#current {
+    background-color: rgb(7, 31, 51);
+    padding: 0 2em;
+}
+
+#current input {
+    background-color: rgb(13, 47, 75);
+    color: rgb(180, 220, 233);
+    border: none;
+    width: 100%;
+    margin-bottom: 2em;
+    font-size: larger;
+}
