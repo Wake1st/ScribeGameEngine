@@ -3,46 +3,46 @@
         {
             "name" : "goto",
             "args" : [
-                ["place"]
+                ["places"]
             ]
         },
         {
             "name" : "move",
             "args" : [
                 [
-                    "place",
-                    "item",
-                    "person"
+                    "places",
+                    "items",
+                    "persons"
                 ],
                 [
-                    "place",
-                    "item",
-                    "person"
+                    "places",
+                    "items",
+                    "persons"
                 ]
             ]
         },
         {
             "name" : "take",
             "args" : [
-                ["item"]
+                ["items"]
             ]
         },
         {
             "name" : "put",
             "args" : [
-                ["item"],
+                ["items"],
                 [
-                    "place",
-                    "item",
-                    "person"
+                    "places",
+                    "items",
+                    "persons"
                 ]
             ]
         },
         {
             "name" : "give",
             "args" : [
-                ["person"],
-                ["item"]
+                ["persons"],
+                ["items"]
             ]
         }
     ],
@@ -60,34 +60,23 @@
         "smelly",
         "refreshing"
     ],
-    "items" : [
+    "requirements" : [
         {
-            "name" : "gum",
-            "attributes" :[
-                "minty",
-                "chewy"
+            "name":"degreese",
+            "propertyName" : "stuck",
+            "propertyValue" : true,
+            "requirements":[
+                "greesy"
             ]
         },
         {
-            "name" : "fried cheese",
-            "attributes" :[
-                "greesy",
-                "chewy",
-                "soft"
-            ]
-        },
-        {
-            "name" : "coffee",
-            "attributes" :[
-                "harsh",
-                "nutty"
-            ]
-        },
-        {
-            "name" : "motor oil",
-            "attributes" :[
-                "greesy",
-                "smelly"
+            "name":"freshen up",
+            "propertyName" : "fresh",
+            "propertyValue" : false,
+            "requirements":[
+                "refreshing",
+                "flowery",
+                "minty"
             ]
         }
     ],
@@ -122,23 +111,34 @@
             ]
         }
     ],
-    "requirements" : [
+    "items" : [
         {
-            "name":"degreese",
-            "propertyName" : "stuck",
-            "propertyValue" : true,
-            "requirements":[
-                "greesy"
+            "name" : "gum",
+            "attributes" :[
+                "minty",
+                "chewy"
             ]
         },
         {
-            "name":"freshen up",
-            "propertyName" : "fresh",
-            "propertyValue" : false,
-            "requirements":[
-                "refreshing",
-                "flowery",
-                "minty"
+            "name" : "fried cheese",
+            "attributes" :[
+                "greesy",
+                "chewy",
+                "soft"
+            ]
+        },
+        {
+            "name" : "coffee",
+            "attributes" :[
+                "harsh",
+                "nutty"
+            ]
+        },
+        {
+            "name" : "motor oil",
+            "attributes" :[
+                "greesy",
+                "smelly"
             ]
         }
     ]
