@@ -11,12 +11,12 @@
             "args" : [
                 [
                     "places",
-                    "items",
+                    "things",
                     "persons"
                 ],
                 [
                     "places",
-                    "items",
+                    "things",
                     "persons"
                 ]
             ]
@@ -24,16 +24,16 @@
         {
             "name" : "take",
             "args" : [
-                ["items"]
+                ["things"]
             ]
         },
         {
             "name" : "put",
             "args" : [
-                ["items"],
+                ["things"],
                 [
                     "places",
-                    "items",
+                    "things",
                     "persons"
                 ]
             ]
@@ -42,7 +42,7 @@
             "name" : "give",
             "args" : [
                 ["persons"],
-                ["items"]
+                ["things"]
             ]
         }
     ],
@@ -111,7 +111,7 @@
             ]
         }
     ],
-    "items" : [
+    "things" : [
         {
             "name" : "gum",
             "attributes" :[
