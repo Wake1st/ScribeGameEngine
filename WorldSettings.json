@@ -1,12 +1,19 @@
 {
+    "ready": false,
+    "player" : {},
     "commands" : [
         {
+            "id":0,
             "name" : "goto",
             "args" : [
                 ["places"]
+            ],
+            "res" : [
+                "player < place"
             ]
         },
         {
+            "id":1,
             "name" : "move",
             "args" : [
                 [
@@ -19,15 +26,23 @@
                     "things",
                     "persons"
                 ]
+            ],
+            "res" : [
+                "arg_1 < arg_0"
             ]
         },
         {
+            "id":2,
             "name" : "take",
             "args" : [
                 ["things"]
+            ],
+            "res" : [
+                "player < arg_0"
             ]
         },
         {
+            "id":3,
             "name" : "put",
             "args" : [
                 ["things"],
@@ -36,14 +51,23 @@
                     "things",
                     "persons"
                 ]
+            ],
+            "res" : [
+                "player > arg_0",
+                "arg_1 < arg_0"
             ]
         },
         {
+            "id":4,
             "name" : "give",
             "args" : [
                 ["persons"],
                 ["things"]
-            ]
+            ],
+            "res" : [
+                "player > arg_1",
+                "arg_0 < arg_1"
+            ] 
         }
     ],
     "attributes" : [
@@ -81,6 +105,9 @@
         }
     ],
     "persons" : [
+        {
+            "name": "guy"
+        },
         {
             "name" : "billy"
         },
