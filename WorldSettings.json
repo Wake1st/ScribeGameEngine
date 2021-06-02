@@ -9,7 +9,11 @@
                 ["places"]
             ],
             "res" : [
-                "player < place"
+                {
+                    "parent" : "player",
+                    "directive" : "<",
+                    "child" : "place"
+                }
             ]
         },
         {
@@ -28,7 +32,11 @@
                 ]
             ],
             "res" : [
-                "arg_1 < arg_0"
+                {
+                    "parent" : "arg_1",
+                    "directive" : "<",
+                    "child" : "arg_0"
+                }
             ]
         },
         {
@@ -38,7 +46,11 @@
                 ["things"]
             ],
             "res" : [
-                "player < arg_0"
+                {
+                    "parent" : "player",
+                    "directive" : "<",
+                    "child" : "arg_0"
+                }
             ]
         },
         {
@@ -53,8 +65,16 @@
                 ]
             ],
             "res" : [
-                "player > arg_0",
-                "arg_1 < arg_0"
+                {
+                    "parent" : "player",
+                    "directive" : ">",
+                    "child" : "arg_0"
+                },
+                {
+                    "parent" : "arg_1",
+                    "directive" : "<",
+                    "child" : "arg_0"
+                }
             ]
         },
         {
@@ -65,8 +85,16 @@
                 ["things"]
             ],
             "res" : [
-                "player > arg_1",
-                "arg_0 < arg_1"
+                {
+                    "parent" : "player",
+                    "directive" : ">",
+                    "child" : "arg_1"
+                },
+                {
+                    "parent" : "arg_0",
+                    "directive" : "<",
+                    "child" : "arg_1"
+                }
             ] 
         }
     ],

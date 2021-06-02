@@ -63,12 +63,47 @@ function processCommand({comm,result}) {
           
           if (matchingArg) {
             // update the world controller
+            for (const res of commandSetting.res) {
+              //  Store a switch case that dictates what each command should do
+              let par;
+              switch (res.parent) {
+                case "player":
+                  par = worldSettings.player;
+                  break;
+                default:
+                  par = matchingArg;
+                  break;
+              }
+
+              //  get the proper argument object
+              let chi;
+              switch (res.child) {
+                case "player":
+                  chi = worldSettings.player;
+                  break;
+                default:
+                  chi = matchingArg;
+                  break;
+              }
+
+              switch (res.directive) {
+                case ">":
+                  par[chi.name] = {};
+                  break;
+                case "<":
+                  par[chi.name] = {...chi};
+                  break;
+              }
+            }
+          } else {
             failures++;
           }
       }
 
-      if (failures > 0) 
-          result = `${worldSettings.player.name} ${mainCommand} ${arguments}`;
+      if (failures === 0) 
+        result = `${worldSettings.player.name} ${mainCommand} ${arguments}`;
+      else
+        result = `That doesn't seem to work.`
   } else {
       result = `Nothing seems to happen.`;
   }
