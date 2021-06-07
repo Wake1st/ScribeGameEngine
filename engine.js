@@ -15,7 +15,7 @@ let worldHistory = [];
     
     worldSettings = await readJson('./WorldSettings.json');
 
-    console.log(worldSettings.things);
+    //console.log(worldSettings.things);
 })()
 
 
@@ -47,7 +47,8 @@ function disectCommand(command) {
 
 function processCommand({comm,result}) {
   let mainCommand = comm.commParts[0];
-  let arguments = comm.commParts.slice(1).join(' ');
+  let arguments = comm.commParts.slice(1);
+  let argumentStatement = arguments.join(' ');
 
   //  get the command setting
   const commandSetting = worldSettings.commands.find(e => e.name === mainCommand);
@@ -56,52 +57,61 @@ function processCommand({comm,result}) {
   if (commandSetting !== undefined){
       let failures = 0;
 
+      let matchingArgs = [];
       //  see if the arguments match those for the given command
       for (const arg of commandSetting.args) {
-          //console.log(arg,arguments);
-          const matchingArg = worldSettings[arg].find(s => arguments.includes(s.name));
-          
-          if (matchingArg) {
-            // update the world controller
-            for (const res of commandSetting.res) {
-              //  Store a switch case that dictates what each command should do
-              let par;
-              switch (res.parent) {
-                case "player":
-                  par = worldSettings.player;
-                  break;
-                default:
-                  par = matchingArg;
-                  break;
-              }
+        //console.log(arg,arguments);
+        const matchingArg = worldSettings[arg].find(s => argumentStatement.includes(s.name));
+        
+        if (matchingArg !== undefined) {
+          matchingArgs.push(matchingArg);
+        }
 
-              //  get the proper argument object
-              let chi;
-              switch (res.child) {
-                case "player":
-                  chi = worldSettings.player;
-                  break;
-                default:
-                  chi = matchingArg;
-                  break;
-              }
-
-              switch (res.directive) {
-                case ">":
-                  par[chi.name] = {};
-                  break;
-                case "<":
-                  par[chi.name] = {...chi};
-                  break;
-              }
-            }
-          } else {
-            failures++;
-          }
       }
+              
+      if (failures === 0)  {
+        // update the world controller
+        for (const res of commandSetting.res) {
+          //  Store a switch case that dictates what each command should do
+          let par;
+          switch (res.parent) {
+            case "player":
+              par = worldSettings.player;
+              break;
+            default:
+              let index = res.parent.split('_')[1];
+              const argName = arguments[index];
+              par = matchingArgs.find(a => a.name === argName);
+              break;
+          }
 
-      if (failures === 0) 
-        result = `${worldSettings.player.name} ${mainCommand} ${arguments}`;
+          //  get the proper argument object
+          let chi;
+          switch (res.child) {
+            case "player":
+              chi = worldSettings.player;
+              break;
+            default:
+              let index = res.child.split('_')[1];
+              const argName = arguments[index];
+              chi = matchingArgs.find(a => a.name === argName);
+              break;
+          }
+
+          switch (res.directive) {
+            case ">":
+              delete par[chi.name];
+              break;
+            case "<":
+              par[chi.name] = {...chi};
+              break;
+          }
+
+          console.log(par,chi)
+        }
+
+        result = `${worldSettings.player.name} ${mainCommand} ${argumentStatement}`;
+      }
       else
         result = `That doesn't seem to work.`
   } else {

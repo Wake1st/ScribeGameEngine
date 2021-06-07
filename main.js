@@ -20,6 +20,7 @@ input.addEventListener('keypress', (e) => {
         } else {
             let action = handleTurn(comm);
             displayHistory(action);
+            //console.log(worldSettings.player)
         }
     }
 });
