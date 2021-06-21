@@ -12,7 +12,7 @@
                 {
                     "parent" : "player",
                     "directive" : "<",
-                    "child" : "place"
+                    "child" : "arg_0"
                 }
             ]
         },

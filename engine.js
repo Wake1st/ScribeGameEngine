@@ -60,13 +60,13 @@ function processCommand({comm,result}) {
       let matchingArgs = [];
       //  see if the arguments match those for the given command
       for (const arg of commandSetting.args) {
-        //console.log(arg,arguments);
         const matchingArg = worldSettings[arg].find(s => argumentStatement.includes(s.name));
         
         if (matchingArg !== undefined) {
           matchingArgs.push(matchingArg);
         }
-
+        
+        console.log(arg,arguments);
       }
               
       if (failures === 0)  {
